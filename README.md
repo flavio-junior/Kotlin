@@ -75,7 +75,10 @@ fun main {
 > ***Quando não declaramos o tipo da variável, o Kotlin entende Automaticamente qual é o tipo da variavel com a inferência de tipos, ou seja: Através da dedução de tipos {var name = "Flávio"}***
 
 ***Tipos de dados primitivos***
-```
+```kotlin
+
+    // TODO: 22/07/2022 GLOSSÁRIO  (Double, Float, String, Int, True, False)
+
 /*
 Números Decimais
 */
@@ -107,5 +110,44 @@ Variáveis do tipo inteiro
     val long: Long = 23321424352983287
     // Reservar todo o restante de espaço da variável
     val reserva: Long = 2389128332737L
-    ```
+    
+/*
+boolean (TRUE | FALSE)
+*/
+
+    // boolean 1 byte (8-bits)
+    val boolean = true
+
+```
+
+***Conversão de Tipos Primitivos***
+```kotlin
+    // TODO: 22/07/2022 Converter Inteiro Para Decimal
+
+    val mediaPreco = 99
+    val resposta = mediaPreco.toDouble()
+    println(resposta)
+
+    // TODO: 22/07/2022 Converter Decimal Para Inteiro
+
+    val price = 99.9
+    val converter = price.toInt()
+    println(converter)
+
+    // TODO: 22/07/2022 Converter Decimal Para Long
+    val long = 23.344356564
+    val converterToLong = long.toLong()
+    println(converterToLong)
+
+    // TODO: 22/07/2022 Converter Decimal Para String
+    val string = 4345.545
+    val converterToString = string.toString()
+    println(converterToString)
+```
+
+# REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
+
+> ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
+
+> ***Variáveis sempre devem começar com letra minúscula***
 
