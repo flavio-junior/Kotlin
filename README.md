@@ -443,6 +443,58 @@ Função main:
     }
 ```
 
+***Parâmetros Nomeados***
+```Kotlin
+    fun main() {
+        // Parâmetro nomeado
+        idade(idade = 15) // Ao preencher os parâmetros, você pode: Manter os parâmetro, reordenar ou não declara o nome do argumento, passando ele de forma direta
+    }
+
+    fun idade(idade: Int) {
+        if (idade <= 17) {
+            println("Menor de idade")
+        } else if (idade >= 18 && idade <= 69) {
+            println("Maior de idade")
+        } else {
+            println("Idoso")
+        }
+    }
+```
+
+***Sobrecarga de Funções***
+```Kotlin
+fun main() {
+    idade(16)
+    idade("Flávio", 21)
+}
+
+fun idade(idade: Int) {
+    println("Minha idade é $idade")
+}
+
+fun idade(nome: String, idade: Int) {
+    println("Nome: $nome, Idade $idade")
+}
+```
+
+> ***A sobrecarga de funções permite criar mais de uma função com o mesmo nome porém com parâmetros diferentes***
+
+***Valores Padrões de Uma Função***
+```Kotlin
+    fun main() {
+        // TODO: 22/07/2022 Ao preencher os parametros não é necessário colocar como falso o último parametro
+        register("Flávio", "flavio@gmail.com")
+        // TODO: 22/07/2022 Caso queira mudar o valor padrão da variavél é necessário preencher o valor da váriavel como true 
+        register("Rafael", "rafael@gmail.com", true)
+        register("Carol", "carol@gmail.com")
+    }
+
+    // TODO: 22/07/2022  Ao colocar dentro do parametro o isAdmin como false ele determina que o valor por padrão é falso 
+    fun register(name: String, email: String, isAdmin: Boolean = false) {
+        println("Nome de usuário: $name, email: $email")
+    }
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
