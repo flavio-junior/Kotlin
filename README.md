@@ -495,6 +495,52 @@ fun idade(nome: String, idade: Int) {
     }
 ```
 
+# OOP - ORIENTED OBJECT PROGRAMMING
+
+***DRY - don't repeat yourself***
+
+***Criando uma classe em Kotlin***
+```Kotlin
+    class User { // Classe
+        var name: String = ""
+
+        fun print() {
+        println(name.uppercase())
+        }
+    }
+```
+
+***Instanciando uma Classe em Kotlin***
+```Kotlin
+    val user1 = User() // Objeto
+    user1.name = "Flávio"
+    user1.print()
+```
+
+> ***Uma Classe em Kotlin é iniciada pela palavra reserva "class", já o nome da classe "User", vem logo em seguida. Os "()" são chamados de parâmetros, assim como as funções. A declaração dos atributos, construtores e metódos está dentro do "{}" ou como é chamado: Body***
+
+***Métodos de Alteração (set)***
+```Kotlin
+    fun main() {
+        val user1 = User() // Objeto
+        user1.name = "Flávio"
+        user1.update("Júnior")
+        user1.print()
+    }
+
+    class User {
+        var name: String = ""
+
+        fun print() {
+            println(name.uppercase())
+        }
+
+        fun update(newName: String) {
+            name = "Olá, $newName! seu nome foi atualizado com sucesso!"
+        }
+    }
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
