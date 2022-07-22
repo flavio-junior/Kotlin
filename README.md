@@ -250,9 +250,134 @@ O Kotlin permite a utilização do _ no código para uma melhor organição na �
     println(nomeMinusculo)
 ```
 
+***Formatando textos***
+```Kotlin
+    // TODO: 22/07/2022 Formatar texto em aspas triplas
+    val messagem = """
+        Olá Flávio, 
+        tudo bem com você? 
+        Seu produto chegou!
+    """.trimIndent() // Ao utilizar o trimIndent, seu código passa a identar seu código
+    println(messagem)
+
+    // TODO: 22/07/2022 Separar o texto por ;
+    val csv = """
+        Texto 01,
+        Texto 02
+    """.replaceIndent(";") // Define qual tipo de caractere você deseja exibir na tela
+    println(csv)
+
+    // TODO: 22/07/2022 Adicionar vários objetos em uma mesma variável
+    val name = "Flávio"
+    val age = 21
+    println("Olá $name, você tem $age anos")
+    //Somar valores
+    val more = 9
+    println("Olá $name, você tem ${more + age} anos")
+```
+
+***Condições Lógicas***
+```Kotlin
+    /*
+    Condições Lógicas
+    < Menor
+    <= Menor ou igual
+    > Maior
+    >= Maior ou igual
+    ! Negação -> Retorna o valor oposto do esperado
+    == Igual
+    != Diferente
+     */
+
+    val age = 20
+
+    if (age <= 17) {
+        println("Você é menor de Idade, Não pode votar!")
+    } else if (age >= 18 && age <= 69) {
+        println("Você é maior de Idade e está apto a votar!")
+    } else {
+        println("Você é Idoso! Seu voto é opcional!")
+    }
+```
+
+***Omitir Código***
+```kotlin
+    // TODO: 22/07/2022 omitir código
+    val number = 10
+    if (number >= 20) println("O número informado é maior que 20")
+    // Executa o que está a frente do if caso seja chamado, caso contrário ignora o if
+    println("O número informado é menor que 20")
+
+    // omitir código através de um if-else
+    val numero = 15
+    if (number == 15) println("O número informado é igual a 15")
+    else println("O número informado é diferente de 15")
+```
+
+***Condições Compostas***
+```Kotlin
+    // Tabela verdade
+
+    //
+    // Símbolo -> && E -> Todas as empressões devem voltar como verdadeiro
+    // TRUE | TRUE = true
+    // TRUE | FALSE = false
+    // FALSE | TRUE = false
+    // FALSE | FALSE = false
+
+    // Símbolo -> || OU -> Uma das empressões deve retornar como verdadeiro
+    // TRUE | TRUE = true
+    // TRUE | FALSE = true
+    // FALSE | TRUE = true
+    // FALSE | FALSE = false
+
+    val price = 49
+    val nameProduct = "Teclado"
+    if (price == 49 || nameProduct == "Teclado") { // Expressão composta
+        println("Sucesso")
+    } else{
+        println("False")
+    }
+```
+
+***Comparar Strings***
+```Kotlin
+    val product00 = "Mac"
+    val product01 = "Mac"
+    if (product00 == product01) {
+        println("Verdadeiro")
+    } else {
+        println("Falso")
+    }
+```
+
+***Nullable e Elvis***
+```Kotlin
+    // Nullable -> Aceita null
+    val product: String? = "imac"
+    //val product: String? = null
+
+    // TODO: 22/07/2022 Fazendo verificação com if-else
+    if (product != null) {
+        println(product.length)
+    }
+
+    // TODO: 22/07/2022 fazendo verificação de forma direta
+    println(product?.length)
+
+    // TODO: 22/07/2022 retorna ou a espressão ou zero
+    val con = if (product != null) product.length else 0
+        println("o valor $con")
+
+    // TODO: 22/07/2022 Utilizando o operador Elvis
+    println(product?.length ?: 0)
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
 
 > ***Variáveis sempre devem começar com letra minúscula***
+
+> ***Não é utilizado no Koltin caracteres especiais***
 
