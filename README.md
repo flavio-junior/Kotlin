@@ -429,6 +429,20 @@ Função main:
     fun message() = println("Hello world!")
 ```
 
+***Parametrizando Funções***
+```Kotlin
+    fun idade(idade: Int) {
+        if (idade <= 17) {
+            println("Menor de idade")
+        } else if (idade >= 18 && idade <= 69) {
+            println("Maior de idade")
+        } else {
+            println("Idoso")
+        }
+       // if (idade <= 17) println("Menor de idade") else if (idade >= 18 && idade <= 69) println("Maior de idade") else println("Idoso")
+    }
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
