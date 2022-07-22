@@ -373,6 +373,16 @@ O Kotlin permite a utilização do _ no código para uma melhor organição na �
     println(product?.length ?: 0)
 ```
 
+***Funções e Reutilização de Código***
+> ***Functions | Funções, são blocos de códigos reutilizáveis.***
+
+Função main:
+```kotlin
+fun main(){
+    // Inicia o programa
+}
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
@@ -380,4 +390,37 @@ O Kotlin permite a utilização do _ no código para uma melhor organição na �
 > ***Variáveis sempre devem começar com letra minúscula***
 
 > ***Não é utilizado no Koltin caracteres especiais***
+
+***Formato de uma função***
+```kotlin
+fun message(){
+    
+}
+```
+
+***O formato de uma função é iniciado pelo "fun", que inicia a função enquanto o "message" é o nome da função. Já os "()" são os parâmetros da função. E o "{}" é onde executa os blocos de código na função.***
+
+***A estrutura "fun message()" é chamada de Declaração, já o "{}" é chmado de Body | Corpo***
+
+***Tipos de retornos***
+```Kotlin
+// Extrusão sem retorno
+fun message() {
+    println("Olá mundo")
+}
+
+// Função com retorno
+fun somar(): Int {
+    return 2 + 1
+}
+
+// Função sem retorno, do tipo UNIT
+fun add(): Unit {
+    val soma = 3 + 5
+    println("Valor da soma $soma")
+}
+// TODO: 22/07/2022 por padrão o Kotlin omite o Unit que por sua vez não é necessário adicionar o UNIT para informar que a extrução retorna nada!
+```
+
+
 
