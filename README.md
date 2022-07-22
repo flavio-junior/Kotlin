@@ -2,16 +2,16 @@
 
 ***Escrevendo primeira linha de código com kotlin***
 ```kotlin
-fun main() {
-    println("Hello world!")
-}
+    fun main() {
+        println("Hello world!")
+    }
 ```
 
 ***Método main***
 ```kotlin
-fun main {
+    fun main {
 
-}
+    }
 ```
 
 ***Exibindo uma mensagem na tela***
@@ -76,12 +76,11 @@ fun main {
 
 ***Tipos de dados primitivos***
 ```kotlin
-
     // TODO: 22/07/2022 GLOSSÁRIO  (Double, Float, String, Int, True, False)
 
-/*
-Números Decimais
-*/
+    /*
+    Números Decimais
+    */
 
     // Double Espaço de 64-bit ponto-flutuante (floating point)
     val price: Double = 31.90
@@ -89,16 +88,16 @@ Números Decimais
     // Float Espaço de 32-bit
     val desconto: Float = 10.90f
 
-/*
-Formato de texto
-*/
+    /*
+    Formato de texto
+    */
 
     // String
     val product: String = "Smartphone Samsung A01"
-    
-/*
-Variáveis do tipo inteiro
-*/
+
+    /*
+    Variáveis do tipo inteiro
+    */
 
     // Byte - Espaço de 8-bit
     val byte: Byte = 8
@@ -110,14 +109,13 @@ Variáveis do tipo inteiro
     val long: Long = 23321424352983287
     // Reservar todo o restante de espaço da variável
     val reserva: Long = 2389128332737L
-    
-/*
-boolean (TRUE | FALSE)
-*/
+
+    /*
+    boolean (TRUE | FALSE)
+    */
 
     // boolean 1 byte (8-bits)
     val boolean = true
-
 ```
 
 ***Conversão de Tipos Primitivos***
@@ -162,9 +160,9 @@ boolean (TRUE | FALSE)
 ***Usando Número Grandes***
 
 ```kotlin
-/*
-O Kotlin permite a utilização do _ no código para uma melhor organição na últilização de números grandes
- */
+    /*
+    O Kotlin permite a utilização do _ no código para uma melhor organição na últilização de números grandes
+     */
 
     val number = 329_842_389_385
     println(number)
@@ -378,9 +376,57 @@ O Kotlin permite a utilização do _ no código para uma melhor organição na �
 
 Função main:
 ```kotlin
-fun main(){
-    // Inicia o programa
-}
+    fun main(){
+        // Inicia o programa
+    }
+```
+
+***Formato de uma função***
+```kotlin
+    fun message(){
+
+    }
+```
+
+***O formato de uma função é iniciado pelo "fun", que inicia a função enquanto o "message" é o nome da função. Já os "()" são os parâmetros da função. E o "{}" é onde executa os blocos de código na função.***
+
+***A estrutura "fun message()" é chamada de Declaração, já o "{}" é chmado de Body | Corpo***
+
+***Tipos de retornos***
+```Kotlin
+    // Extrusão sem retorno
+    fun message() {
+        println("Olá mundo")
+    }
+
+    // Função com retorno
+    fun somar(): Int {
+        return 2 + 1
+    }
+
+    // Função sem retorno, do tipo UNIT
+    fun add(): Unit {
+        val soma = 3 + 5
+        println("Valor da soma $soma")
+    }
+    // TODO: 22/07/2022 por padrão o Kotlin omite o Unit que por sua vez não é necessário adicionar o UNIT para informar que a extrução retorna nada!
+```
+
+***Escopo de Funções***
+```kotlin
+    fun message() {
+        fun warning(){
+            println("Atenção!")
+            // Funções chamadas internamente dentro de uma função principal
+        }
+        warning()
+    }
+```
+
+***Declaração e Corpo de uma Função***
+```Kotlin
+    // body inline - Função mais enchuta
+    fun message() = println("Hello world!")
 ```
 
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
@@ -391,36 +437,4 @@ fun main(){
 
 > ***Não é utilizado no Koltin caracteres especiais***
 
-***Formato de uma função***
-```kotlin
-fun message(){
-    
-}
-```
-
-***O formato de uma função é iniciado pelo "fun", que inicia a função enquanto o "message" é o nome da função. Já os "()" são os parâmetros da função. E o "{}" é onde executa os blocos de código na função.***
-
-***A estrutura "fun message()" é chamada de Declaração, já o "{}" é chmado de Body | Corpo***
-
-***Tipos de retornos***
-```Kotlin
-// Extrusão sem retorno
-fun message() {
-    println("Olá mundo")
-}
-
-// Função com retorno
-fun somar(): Int {
-    return 2 + 1
-}
-
-// Função sem retorno, do tipo UNIT
-fun add(): Unit {
-    val soma = 3 + 5
-    println("Valor da soma $soma")
-}
-// TODO: 22/07/2022 por padrão o Kotlin omite o Unit que por sua vez não é necessário adicionar o UNIT para informar que a extrução retorna nada!
-```
-
-
-
+> ***Funções não podem conter o mesmo nome***
