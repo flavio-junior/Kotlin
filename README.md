@@ -145,6 +145,111 @@ boolean (TRUE | FALSE)
     println(converterToString)
 ```
 
+***Números vs. Textos***
+```kotlin
+    val number = "10"
+    val answer = number.toInt()
+    // TODO: 22/07/2022 Fazendo conversão de forma indireta através de um valor atribuido
+    println(answer)
+    // TODO: 22/07/2022 Fazendo conversão de forma direta 
+    println(number)
+
+    // TODO: 22/07/2022 Convertendo valor inteiro para String 
+    val text = 10
+    println("Número covertido: ${text.toString()}")
+```
+
+***Usando Número Grandes***
+
+```kotlin
+/*
+O Kotlin permite a utilização do _ no código para uma melhor organição na últilização de números grandes
+ */
+
+    val number = 329_842_389_385
+    println(number)
+```
+
+***Operadores lógicos***
+```kotlin
+    // Operadores Lógicos(+ - / * !)
+
+    // TODO: 22/07/2022 Soma
+    var mais = 21
+    mais = mais + 9
+    println(mais)
+
+    // TODO: 22/07/2022 Subtração
+    var menos = 21
+    menos = menos - 9
+    println(menos)
+
+    // TODO: 22/07/2022 Multiplicação
+    var multiplicacao = 21
+    multiplicacao = multiplicacao * 9
+    println(multiplicacao)
+
+    // TODO: 22/07/2022 Divisão
+    var divisao = 21
+    divisao = divisao / 9
+    println(divisao)
+
+    // TODO: 22/07/2022 Booleano
+    // true | false | (1, 0)
+    var boolean = false
+    // Exibir estado atual do boolean
+    println(boolean)
+    // Inverter a lógica
+    println(!boolean)
+```
+
+***Concatenar***
+```kotlin
+ // TODO: 22/07/2022 Concatenar dois valores
+    var valor = "15"
+    println(valor + " Idade do Usuário")
+```
+
+***Caracteres especiais***
+```kotlin
+    val name = "Flávio"
+    val sobrenome = "Júnior"
+    val pularLina = "\n"
+    val tab = "\t"
+    println(name + sobrenome)
+    println(name + pularLina + sobrenome)
+    println(name + tab + sobrenome)
+```
+
+***Chars***
+```kotlin
+    // Uma String é uma sequência de caracteres(chars)
+
+    /*
+     Variáveis do Char aceitam apenas um Caractere e devem está declarado apenas com aspas simples, enquanto
+     variáveis do Tipo String aceitam várias letras e deve ser declara com aspas compostas
+     */
+
+    val char: Char = 'F'
+    val String = "dfdfdf"
+```
+
+***Acessando propriedades***
+```kotlin
+    // TODO: 22/07/2022 Acessar propriedades do objeto
+    val nome = "Flávio Júnior" // OBJETO=tipo
+    val tamanhoNome = nome.length
+    println(tamanhoNome)
+
+    // TODO: 22/07/2022 Exibir nome maiúscula
+    val nomeMaiusculo = nome.uppercase() // Função que muda o comportamento de um objeto
+    println(nomeMaiusculo)
+
+    // TODO: 22/07/2022 Exibir nome minúscula
+    val nomeMinusculo = nome.lowercase()
+    println(nomeMinusculo)
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
