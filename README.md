@@ -541,6 +541,47 @@ fun idade(nome: String, idade: Int) {
     }
 ```
 
+***Métodos de busca (get)***
+```Kotlin
+    class User {
+        fun getNameLength(): Int {
+            return name.length
+        }
+    }
+```
+
+***Construtores***
+```Kotlin
+    // OPÇÃO 01 - Sem valor padrão + o construtor explicita
+    class User constructor(var name: String = "") {}
+
+    // OPÇÃO 02 - Valor padrão
+    class User (var name: String = "") {}
+
+    // OPÇÃO 03 - espera que a construção receba o valor (var)
+    class User constructor(var name: String) {}
+```
+
+> ***Assim como as variáveis, o Kotlin também cria automaticamente um construtor padrão dentro da classe por inferência***
+
+***Sobrecarga de Construtores***
+```Kotlin
+    // Construtor criado no projeto
+    class User constructor(var name: String, var isAdmin: Boolean) {
+
+        // TODO: 22/07/2022 para executar um subconstructor dentro do constructor principal é necessário colocar o this no subconstructor
+        constructor(name: String) : this(name, false)
+    }
+   
+   // Instanciando Constructor
+    fun main() {
+        val user01 = User("Flávio")
+        // TODO: 22/07/2022 Ao utilizar dois constructor com parametros default é opcional preencher o segundo parametro
+        val user02 = User("Rafael", true)
+    }
+
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
@@ -550,3 +591,5 @@ fun idade(nome: String, idade: Int) {
 > ***Não é utilizado no Koltin caracteres especiais***
 
 > ***Funções não podem conter o mesmo nome***
+
+> ***Nome de classes começam a primeira letra maiúscula***
