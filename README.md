@@ -925,6 +925,126 @@ class User1(var name: String) {
     data class Usuario(val id: Long, var name: String, var email: String)
 ```
 
+***Pares e Trios: Estruturas de Dados Simples***
+```Kotlin
+    fun main() {
+        // TODO: 24/07/2022 O Pair permite fazer um pareamento de chave valor
+        val coordinate =
+            Pair(10, 20) // Primeira forma de criar um Pair(que é um data class) e permite armazenar valores diferentes
+        //val coor = 10 to 20 Segunda forma de Criar um Pair
+        /*
+         O Pair permite trabalhar com tudo que seja com valores Duplos, eliminando a necessidade de criar um data class
+         */
+
+        // Exibir primeiro valor
+        println(coordinate.first)
+        // Exibir segundo valor
+        println(coordinate.second)
+
+        // TODO: 24/07/2022 Declarar valores triples
+        val triple = Triple("Buíque", "Pernambuco", "Brazil")
+        println("Cidade: ${triple.first} \n Estado: ${triple.second} \n ${triple.third}")
+    }
+```
+
+***Herança***
+```Kotlin
+    fun main() {
+        val p = Professor("Flávio", "Pernambuco")
+        println(p.descricao())
+        val a = Aluno(System.currentTimeMillis(), "Rafael", "Buíque")
+        println("ID: ${a.idMatricula} \n informações: ${a.descricao()})")
+    }
+
+    // TODO: 24/07/2022 Herança | Edar Herança
+
+    //Super Class | Classe Mâe
+    open class Pessoa(var nome: String, var endereco: String) {
+        // TODO: 24/07/2022 Ao iniciar a classe como open, você permite que outras classes hedem suas propriedades em outra classe, caso contrário não é possivel acessar essas propriedades!
+        fun descricao() = "Meu nome é: $nome, e eu moro em $endereco "
+    }
+
+    // TODO: 24/07/2022 Ao colocar o : ele estende a classe Pessoa
+    class Professor(nome: String, endereco: String) : Pessoa(nome, endereco) {
+
+    }
+
+    class Aluno(var idMatricula: Long, nome: String, endereco: String) : Pessoa(nome, endereco) {
+        // TODO: 24/07/2022 A classe aluno extende os atributos da classe pessoa e o idMatricula é único. Pertence apenas a classe Aluno
+    }
+```
+
+***Nível de Acesso***
+```Kotlin
+    fun main() {
+        val p = Professor("Flávio", "Pernambuco")
+        println(p.descricao())
+        val a = Aluno(System.currentTimeMillis(), "Rafael", "Buíque")
+        println("ID: ${a.idMatricula} \n informações: ${a.descricao()})")
+    }
+
+    // TODO: 24/07/2022 Herança | Edar Herança
+
+    //Super Class | Classe Mâe
+    open class Pessoa(var nome: String, var endereco: String) {
+        /*
+        Através do private ninguém tem acesso as variáveis de um objeto, apenas a class que tem essa  variável,
+        já o protected permite que classes filhas tenham acesso a essa propriedade
+         */
+
+        // TODO: 24/07/2022 protected ou protegida
+        protected var acessoBiblioteca = false
+        fun descricao() = "Meu nome é: $nome, e eu moro em $endereco. Nive de acesso: $acessoBiblioteca"
+    }
+
+    class Professor(nome: String, endereco: String) : Pessoa(nome, endereco) {
+        init { // Mudar nivél de acesso do professor | Alterar comportamento da classe
+            acessoBiblioteca = true
+        }
+    }
+
+    class Aluno(var idMatricula: Long, nome: String, endereco: String) : Pessoa(nome, endereco) {
+
+    }
+```
+
+***Internal Classes e Módulos***
+```Kotlin
+    internal class Encordoamento(val numeroDeCordas: Int, val marca: String)
+
+    // TODO: 24/07/2022 O internal pode ser acessado apenas de forma interna, ficando disponivél apenas no modulo encordoamento
+
+    open class Instrumento(var cor: String) {
+
+        // TODO: 24/07/2022 para acessar a classe internal é necessário colocar a instancia como privada para funcionar 
+        private lateinit var encordoamento: Encordoamento
+
+        fun console() = "O instrumento é da cor $cor e tem ${encordoamento.numeroDeCordas} cordas"
+
+        /*
+         E como não é possivel acessar a classe Encordoamento, o correto é fazer com que a super class espere as propriedades,
+         para que ela crie o objeto onde a class Instrumento é a única responsável por administrar a class Encordoamento.
+         De grosso modo é possivel adicionar propriedades ao objeto ao mesmo tempo que não é possivel mudar o comportamento delas
+         */
+
+        fun addEncordoamento(num: Int, marca: String){
+            encordoamento = Encordoamento(num, marca)
+        }
+
+    }
+
+    class Guitarra(cor: String) : Instrumento(cor) {
+        init {
+            addEncordoamento(6, "NIG")
+        }
+    }
+    
+    fun main() {
+    val g = Guitarra("Vermelha")
+    println(g.console())
+    }
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
