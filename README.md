@@ -774,6 +774,54 @@ class User1(var name: String) {
     }
 ```
 
+***Condição When***
+```Kotlin
+
+    // TODO: 24/07/2022 Quando | When
+    val name = "Flávio"
+
+    // TODO: 24/07/2022 Primeira forma de criar um if utilizando o when
+    when (name) { // else if
+        "Flávio" -> {
+            println("Usuário encontrado no banco de dados com Sucesso!")
+        }
+
+        else -> println("O usuário informado não existe no banco de dados!") // Função inline
+
+    }
+
+    // TODO: 24/07/2022 Segunda forma de criar um if utilizando o when
+
+    // TODO: 24/07/2022  A IDE sugere que você também possa utilizar no lugar do "name == Flávio" da seguinte forma:
+    /*
+    *  when (name) {
+        "Flávio" ->
+    * */
+    when {
+        name == "Flávio" -> println("Usuário encontrado no banco de dados com Sucesso!")
+        else -> println("O usuário informado não existe no banco de dados!") // Função inline
+    }
+    
+    // TODO: 24/07/2022 deixando mais claro o exemplo do uso do when 
+    fun main() {
+
+    val card = "Elo".uppercase()
+    val marca = CreditCard.valueOf(card.uppercase())
+    when (marca) {
+        CreditCard.VISA -> println("Você ganhou um desconto")
+        else -> println("Ao utilizar o Cartão VISA, você tem desconto de 30% em nossos produtos!")
+    }
+
+    }
+
+    enum class CreditCard {
+    VISA,
+    MASTER,
+    ELO,
+    AMEX
+    }
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
