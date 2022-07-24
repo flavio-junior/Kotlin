@@ -676,6 +676,104 @@ class User1(var name: String) {
     }
 ```
 
+***Classes Aninhadas (Nested Class)***
+```Kotlin
+    fun main() {
+        val carro = Carro()
+        carro.desc()
+        val info = Carro.Dono()
+        info.info()
+    }
+
+    class Carro() {
+
+        val marca: String = "Fiat"
+        val modelo: String = "Fiat Uno 2021"
+        val placa: String = "43rsdlk"
+
+        fun desc() = println("Veiculo da Marca: $marca, \n cujo modelo é o: $modelo \n com o número da placa: $placa")
+
+        // TODO: 24/07/2022 Classe associada a outra classe
+
+        class Dono() {
+            val nome: String = "Flávio"
+            val cpf: String = "123.456.789-10"
+            fun info() = println("Dono do veiculo: $nome, \n Número do cpf: $cpf")
+        }
+
+    }
+```
+***Classes Internas (Inner Class)***
+```Kotlin
+    fun main() {
+        // TODO: 24/07/2022 Primeiro instanciar um objeto e depois acessar o segundo metódo da classe e fazer a chamada  
+        val motorista = Carro()
+        val info = motorista.Dono()
+        println(info.info())
+    }
+
+    class Carro() {
+        val marca: String = "Fiat"
+        val modelo: String = "Fiat Uno 2021"
+        val placa: String = "43rsdlk"
+        val cidade: String = "Buíque-PE"
+
+        // TODO: 24/07/2022 Através do inner class é possivel acessar as propriedades da class de forma interna
+        inner class Dono() {
+            val nome: String = "Flávio"
+            val cpf: String = "123.456.789-10"
+            fun info() =
+                println(" Senhor: $nome, seu Veículo é o da marca, $marca?, \\n cujo modelo é o: $modelo \\n com de placa: $placa, \\n da cidade de: $cidade\"")
+        }
+
+    }
+```
+
+***Classes Enumeradas***
+```Kotlin
+    fun main() {
+        // TODO: 24/07/2022  Exibir propriedade da bandeira
+        println(CreditCard.VISA)
+        // TODO: 24/07/2022 Acessar enumerador da classe
+        println(CreditCard.AMEX.ordinal)
+        // TODO: 24/07/2022 Buscar propriedade com valor definido
+        val creditCardAPIName = "elo"
+        val card = CreditCard.valueOf(creditCardAPIName.uppercase())
+        println(card)
+        // TODO: 24/07/2022 Fazendo comparações
+        if (card == CreditCard.VISA) {
+            println("Você recebeu um desconto de 30%!")
+        } else {
+            println("Ao utilizar o cartão visão você tem descontos em nossos produtos!")
+            // TODO: 24/07/2022 Acessa as propriedades do objeto
+            println("Você está utilizando o cartão: ${card.label}")
+        }
+    }
+
+    /*
+    // TODO: 24/07/2022 Classes Enumeradas
+
+    enum class CreditCard {
+        // TODO: 24/07/2022 Ao definir uma propriedade na classe, ela é enumerada Automaticamente!
+        VISA,
+        MASTER,
+        ELO,
+        AMEX
+    }
+
+     */
+
+    // TODO: 24/07/2022 Classe Enumerada com contrutor
+
+    enum class CreditCard(val label: String) {
+        // TODO: 24/07/2022 Ao definir uma propriedade na classe, ela é enumerada Automaticamente!
+        VISA("Visa"), // Objeto
+        MASTER("Matercard"),
+        ELO("Elo"),
+        AMEX("American Express")
+    }
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
