@@ -822,6 +822,109 @@ class User1(var name: String) {
     }
 ```
 
+***Retornos encurtados***
+```Kotlin
+    fun main() {
+        val card = "ELO".uppercase()
+        val marca = CreditCard.valueOf(card.uppercase())
+
+        // TODO: 24/07/2022 Retornos encurtados com if else
+        /*
+        val discount =
+            if (marca == CreditCard.VISA) {
+                "Desconto de 30%"
+            } else if (marca == CreditCard.MASTER) {
+                "Desconto de 20%"
+            } else {
+                "Sem desconto"
+            }
+        println(discount)*/
+
+        // TODO: 24/07/2022 Retornos encutados com when
+       val  discount = when (marca) {
+            CreditCard.VISA -> "Desconto de 30%"
+            CreditCard.MASTER -> "Desconto de 20%"
+            else -> "Sem desconto"
+        }
+
+        println(discount)
+    }
+
+    enum class CreditCard {
+        VISA,
+        MASTER,
+        ELO,
+        AMEX
+    }
+```
+
+***Data class: Classes de Dados***
+```Kotlin
+     fun main() {
+        val user1 = Usuario("Flávio", "juniorflavio.ofc@gmail.com")
+        println(user1.name)
+
+        /*
+
+        Caso, estivessimos utilizando o class em vez do data class mesmo o user1 sendo igual ao user dois, o if 
+        irá retornar com o valor como falso porque os objetos criados são diferentes quando utilizamos o class, enquanto
+        o data class trata os dados como sendo igual
+
+        val user2 = Usuario("Flávio", "juniorflavio.ofc@gmail.com")
+        println(user2.name)
+        if (user1 == user2) {
+            println("Verdadeiro")
+        } else {
+            println("Falso")
+        } 
+            */
+    }
+
+    /*
+    * Diferente das demais classes, o data class, trata as propriedades e cortamentos da classe como dados | Data class: Classes de Dados
+    * */
+    data class Usuario(var name: String, var email: String)
+
+    /*
+    Quando não definimos o tipo da variável, como var ou val não é possivel acessar a propriedade dessa variável
+    ao instanciamos a classe, não será possivel acessar os atributos da classe e chamar a variável desejada
+    data class Usuario(name: String, email: String)
+     */
+```
+
+***Desestruturação de Classes***
+```Kotlin
+    fun main() {
+        val user1 = Usuario("Flávio", "flavio@outlook.com")
+        val (name, email) = user1 // Ao criamos um variável instanciando o objeto criado, referenciamos o nome, e o email de acordo com a ordem que declaramos o objeto
+        println("Nome de usuário: $name, email: $email")
+    }
+
+    // TODO: 24/07/2022 A Desestruturação de Classes é possivél apenas utilizando data class
+    data class Usuario(var name: String, var email: String)
+```
+
+***Copiando Objetos no Kotlin***
+```Kotlin
+    fun main() {
+        var user1 = Usuario(System.currentTimeMillis(), "Flávio", "flavio@outlook.com")
+
+        // TODO: 24/07/2022 Forma simples de copiar objetos no Kotlin
+        var user2 = Usuario(user1.id, user1.name, user1.email)
+        println("Meu nome é: ${user2.name}, e o endereço do meu e-mail é: ${user2.email}")
+
+        // TODO: 24/07/2022 Forma rápida de copiar todos os dados de um objeto no Kotlin
+        var user3 = user1.copy() // O copy é um recurso do data class onde não está disponivel em outras classes do Kotlin
+        println("Identificador do usuário:${user3.id} \n Nome: ${user3.name}, \n E-mail: ${user3.email}")
+
+        // TODO: 24/07/2022 Outra caracteristica do copy é a possibilidade de troca de um atributo do objeto copiado
+        var user4 = user1.copy(name = "Lindalva")
+        println("Identificador do usuário:${user4.id} \n Nome: ${user4.name}, \n E-mail: ${user4.email}")
+    }
+
+    data class Usuario(val id: Long, var name: String, var email: String)
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
