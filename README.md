@@ -582,6 +582,100 @@ fun idade(nome: String, idade: Int) {
 
 ```
 
+***Somar um segundo valor dentro de outra variável com valor definido***
+```Kotlin
+    fun main() {
+        val number = 27
+        println(number.plus(54))
+    }
+```
+
+***Bloco init***
+```Kotlin
+    init {
+        
+    }
+```
+
+***Acessando propriedades de um objeto***
+```Kotlin
+    fun main() {
+        var name = User1("Flávio")
+        println(name.label)
+    }
+
+    class User1(var name: String) {
+         var label = "Seu nome é ${name}"
+    }
+```
+> ***O bloco init é usado no Kotlin quando queremos iniciar alguma coisa dentro de um Construtor***
+
+***Const em Kotlin***
+```Kotlin
+    const val MESSAGE = "Warning" // Cria uma constante em tempo de copilação e a a inicia com o valor padrão definido
+```
+> ***A diferença entre uma const é que ela é criada em tempo de copilação e é inicia com o valor padrão definido enquanto o val é criado em tempo de execução e necessita de um valor que seja atribuido a ela.***
+
+***companion object***
+```Kotlin
+    class User(var name: String) {
+
+        companion object{ // Corresponde as propriedades e comportamentos da classe
+
+        }
+
+    }
+```
+
+***Mudar estado da classe***
+```Kotlin
+fun main() {
+    var name = User1("Flávio")
+    User1.resetName() // Para mudar o estado da classe pode ser feita de forma direta, sem a necessidade de instanciar um objeto e acessar sua propriedade
+}
+
+class User1(var name: String) {
+
+    companion object {
+        var message = "Warning"
+
+        fun resetName() {
+            message = ""
+        }
+
+    }
+
+}
+```
+
+***Singletons***
+```Kotlin
+    // TODO: 23/07/2022 Objeto único - Instância única que não existe outra instância desse objeto na aplicação | Singletons
+    object Formated {
+        const val MAX_NAME_LENGHT = 8
+        const val PATH = "/Images/"
+        const val FORMAT_EXT = ".jpg"
+        const val DOMAIN = "https://xvideos.com"
+    }
+```
+
+***lateinit***
+```Kotlin
+    fun main() {
+        val usuario = Usuario()
+        usuario.name = "Flávio"
+        usuario.print()
+    }
+
+    class Usuario() {
+        // TODO: 23/07/2022 Diferente do var e do val o lateinit é iniciada apenas no futuro, ou melhor: Quando for chamada para executar alguma coisa
+        lateinit var name: String
+
+        fun print() = println("Meu nome é: $name")
+
+    }
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
