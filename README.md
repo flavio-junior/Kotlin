@@ -1044,6 +1044,39 @@ class User1(var name: String) {
     println(g.console())
     }
 ```
+***Classes Abstratas***
+```Kotlin
+    abstract class Instrumento(var nome: String) {
+
+        // 1. internal
+        // 2. abstract (abstração) é o inverso do concreto
+        // 2.1 Evitar instanciar a classe PAI(que não precisa de instância)
+        // 2.2 
+        // Não precisa do objeto, só precisa de classes filhas e da assinatura da classe MAE/PAI
+
+
+        // A assinatura da função é a mesma (afinar) -> abstrato
+        // Só que, o comportamento de afinar é diferente -> concreto
+        abstract fun afinar()
+    }
+
+    class Guitarra(nome: String) : Instrumento(nome) {
+        override fun afinar() {
+            println("Afinação em E(Mi)")
+        }
+    }
+
+    class Flauta(nome: String) : Instrumento(nome) {
+        override fun afinar() {
+            println("Afinação em C(Dó)")
+        }
+    }
+    
+    fun main() {
+    val flauta = Flauta("Flaúta X")
+    println(flauta.afinar())
+    }
+```
 
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
