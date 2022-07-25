@@ -1162,6 +1162,104 @@ class User1(var name: String) {
     }
 ```
 
+***Sobescrita de funções abstratas***
+```Kotlin
+    fun main() {
+        val btn = Btn("Salvar", 340348, Pair(20, 30))
+        btn.render()
+    }
+
+    abstract class Component {
+
+        abstract fun position(): Pair<Int, Int>
+
+        open fun render() {
+            println("Desenhando a tela${position().first} | ${position().second}")
+        }
+
+    }
+
+    abstract class Text(val text: String) : Component() {
+        override fun render() {
+            super.render()
+            println("Desenhando o texto $text")
+        }
+    }
+
+    class Btn(text: String, val backgroundColor: Int, val pos: Pair<Int, Int>) : Text(text) {
+        override fun position(): Pair<Int, Int> {
+            return pos
+        }
+    }
+
+    class Link(text: String, val pos: Pair<Int, Int>) : Text(text) {
+        override fun position(): Pair<Int, Int> {
+            return pos
+        }
+    }
+```
+
+***Coleções de Dados Básicos***
+```Kotlin
+    fun main() {
+        // TODO: 25/07/2022  arrayof são arrays de objetos
+        val items = arrayOf(1, 2, 3, 4, 5, 6, 7)
+
+        /*
+            // TODO: 25/07/2022 intArrayOf - Lista de inteiros | Além dos inteiros existem outros tipos de arrays do tipo double, string etc
+        val itemsInt = intArrayOf()
+         */
+
+        // TODO: 25/07/2022 Formas de exibir os dados que foram atribuidos dentro do array e exibilos na tela através de um for
+        items.forEach {
+            // TODO: 25/07/2022 forma 1
+            println(it)
+        }
+
+        items.forEach { numbers ->
+            // TODO: 25/07/2022 forma 2
+            println(numbers)
+        }
+
+        items.forEach { println(it) }
+        // TODO: 25/07/2022 forma 3 f
+    }
+```
+
+***Listas de Objetos Fixos***
+```Kotlin
+    fun main() {
+        // TODO: 25/07/2022 Para remover um usuário é necessário criar um objeto que aceite nullable
+        val usuarios = arrayOf<Usuario?>( // Objeto com o tipo indefinido
+            // TODO: 25/07/2022 Preenchendo o array através da classe Usuario | Coleção de tamanho fixo
+            Usuario("Flávio", true),
+            Usuario("Rafael", false),
+            Usuario("Carol", false),
+            Usuario("Isa", false),
+            Usuario("Lindalva", true),
+            Usuario("Amâncio", false)
+        )
+        usuarios.forEach { println(it) }
+
+        // TODO: 25/07/2022 adicionar novo usuario em uma lista existente
+        val addNewUsuario = usuarios.plus(Usuario("Rone", false))
+        addNewUsuario.forEach { println(it) }
+
+        // TODO: 25/07/2022 Para buscar um elemento da lista é através de indices onde o primeiro item da lista começa como zero
+        println("Exibindo primeiro item da lista ${usuarios[0]}")
+
+        // TODO: 25/07/2022 Atualizar um item da lista
+        usuarios[2] = Usuario("Amanda", false)
+        println(usuarios[2])
+
+        // TODO: 25/07/2022 Removendo usuario
+        usuarios[0] = null
+        usuarios.forEach { println(it) }
+    }
+
+    data class Usuario(var name: String, var isAdmin: Boolean)
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
