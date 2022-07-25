@@ -1077,6 +1077,90 @@ class User1(var name: String) {
     println(flauta.afinar())
     }
 ```
+***Níveis de Abstração***
+```Kotlin
+    // Classe vó
+    abstract class Instrumento(var nome: String) {
+        abstract fun afinar()
+    }
+
+    // Classe Mâe
+    abstract class InstrumentoDeCorda(nome: String, var cordas: Int) : Instrumento(nome) {
+        /*
+        Note que a class InstrumentoDeCorda extende dados da class Instrumento porém ela não implementou a função afinar da
+        classe que ela implementou, isto porque ela não é obrigada a implementar/definir o comportamento de assinatura da
+        função abstract por também ser abstract e onde a classe que vier a extender dados dessa classe irão estender a
+        função afinar como no exemplo da classe Guitarra.
+         */
+    }
+
+    // Classe Filha
+    class Guitarra(nome: String) : InstrumentoDeCorda(nome, 6) {
+        override fun afinar() {
+            println("Afinação em E(Mi)")
+        }
+    }
+```
+
+***Funções Concretas em Classes Abstratas***
+```Kotlin
+    // Classe vó
+    abstract class Instrumento(var nome: String) {
+        abstract fun afinar()
+        fun  tocar(){
+            /*
+            Uma classe abstrata também pode ter funções concretas
+             */
+            println("Tocandi a música")
+        }
+    }
+```
+
+***Abstract Class Bidirecional***
+```Kotlin
+    // Classe vó
+    abstract class Instrumento(var nome: String) {
+
+        /*
+           Como deixar o código mais flexivel e generico possivel com abstract class, fazendo com que a classe
+           pai/mae consiga usar o  comportamento da classe filha para fazer alguma coisa
+         */
+        abstract fun afinar(): Boolean
+
+        fun tocar() {
+            if (afinar()) {
+                println("Tocando a música")
+            } else {
+                println("Afine seu instrumento")
+            }
+        }
+    }
+
+    // Classe Mâe
+    abstract class InstrumentoDeCorda(nome: String, var cordas: Int) : Instrumento(nome) {
+
+    }
+
+    // Classe Filha
+    class Guitarra(nome: String) : InstrumentoDeCorda(nome, 6) {
+        override fun afinar(): Boolean {
+            println("Afinação em E(Mi)")
+            return true
+        }
+    }
+```
+
+***Parâmetros de Super Classes***
+```Kotlin
+    fun main() {
+        val g = Guitarra("Tocando melodia")
+        tocar(g)
+    }
+
+    fun tocar(instrumento: Instrumento) {
+        instrumento.tocar()
+    }
+```
 
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
