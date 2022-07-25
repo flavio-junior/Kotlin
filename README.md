@@ -1260,6 +1260,143 @@ class User1(var name: String) {
     data class Usuario(var name: String, var isAdmin: Boolean)
 ```
 
+***Listas de Objetos Dinâmicos***
+```Kotlin
+    fun main() {
+        // TODO: 25/07/2022 Listas dinamicas
+        // LISTS - dinamicas -> somente leitura (read only) imutavel
+        val usuario = listOf(
+            Usuario("Rafael", false),
+            Usuario("Flávio", false),
+            Usuario("Carol", false)
+        )
+        // TODO: 25/07/2022 Buscar todos os items da lista
+        usuario.forEach { println(it) }
+        // TODO: 25/07/2022 Buscar elemento por indice
+        println(usuario[0])
+        // TODO: 25/07/2022 Recuperar o primeiro elemento da lista
+        println(usuario.first())
+        // TODO: 25/07/2022 Recuperar o último elemento da lista
+        println(usuario.last())
+        // TODO: 25/07/2022 Recuperar dados de um array vazio sem quebrar o projeto, porém é necessário o objeto instanciado seja nullable
+        println(usuario.lastOrNull())
+
+        // TODO: 25/07/2022 verificar se a lista está vazia
+        println(usuario.isEmpty())
+        println(usuario.isNotEmpty())
+        println(usuario.isNullOrEmpty())
+
+        // TODO: 25/07/2022 Criar uma lista vazia
+        val emptyList = emptyList<Usuario?>()
+    }
+
+    data class Usuario(var name: String, var isAdmin: Boolean)
+```
+
+***Listas de Dados Mutáveis***
+```Kotlin
+    fun main() {
+        // MUTABLELISTS - lista dinamicas -> de escrita (read write) mutável
+        val usuario = mutableListOf<Usuario>(
+            Usuario("Rafael", false),
+            Usuario("Flávio", false),
+            Usuario("Carol", false)
+        )
+        // TODO: 25/07/2022 Atualizar indice | Adicionar um indice especifico da lista | Realizando alteração na lista
+        usuario[0] = Usuario("Lucas Silva", false)
+        usuario.forEach { println(it) }
+
+        // TODO: 25/07/2022 Adicionar novo item na lista
+        // Primeira forma | Forma direta
+        usuario.add(Usuario("Lindalva", false))
+        usuario.forEach { println(it) }
+
+        // Segunda forma | Adicionar novo objeto via instancia
+        val add = Usuario("Isa", true)
+        usuario.add(add)
+        println("Usuário adicionado ao sistema $add")
+
+        // TODO: 25/07/2022 Excluir item da lista
+        usuario.remove(add)
+        println("Usuário excluido do sistema")
+
+        // TODO: 25/07/2022 Excluir item via parametro
+        usuario.removeAt(0)
+        usuario.forEach { println(it) }
+    }
+
+    data class Usuario(var name: String, var isAdmin: Boolean)
+```
+
+***Combinações de Listas***
+```Kotlin
+    fun main() {
+        val a = mutableListOf("Flávio", "Ryan")
+        val b = listOf("João", "Peter", "Lucy")
+
+        // TODO: 25/07/2022 Verificar se a lista a tem a letra "a"
+        // Primeira forma
+        b.filterTo(a) { it.contains("a") }
+        println(a)
+
+        // Segunda forma
+        val c = listOf("A", "B")
+        val d = listOf("E", "G")
+        val all = listOf(c, d)
+        // TODO: 25/07/2022 Transformar as duas listas em uma única lista
+        println(all.flatten())
+    }
+
+    data class Usuario(var name: String, var isAdmin: Boolean)
+```
+
+***Filtrando Elementos***
+```Kotlin
+    fun main() {
+        val usuarios = mutableListOf<Usuario>(
+            Usuario("Flávio", true),
+            Usuario("Sebatião", true),
+            Usuario("Carol", false)
+        )
+
+        // TODO: 25/07/2022 filtrar usuários que são administradores do sistema
+        val filtered = usuarios.filter { usuario ->
+            usuario.isAdmin
+        }
+        filtered.forEach { println(it) }
+
+        // TODO: 25/07/2022 filtrar usuarios por letras especificas na lista
+        val filtered02 = usuarios.filter { usua ->
+            usua.name.contains("ão")
+        }
+        filtered02.forEach { println(it) }
+
+        // TODO: 25/07/2022 Buscar usuario especifico
+        val name = usuarios.firstOrNull(){it.name == "Robson"}
+        println(name)
+        // TODO: 25/07/2022 poderia ter sido utilizado o apenas o usuarios.first porém como o valor não existe, iria quebrar o sistema
+    }
+
+    data class Usuario(var name: String, var isAdmin: Boolean)
+```
+
+***Coleções de Sets***
+```Kotlin
+    fun main() {
+        // TODO: 25/07/2022 O setOf não permite criar objetos repetidos
+        val usuarios = setOf(
+            Usuario("Flávio", true),
+            Usuario("Flávio", true),
+            Usuario("Carol", false)
+            // TODO: 25/07/2022 Mesmo tendo dois objetos repetidos na lista ele exibe apenas um objeto nessa lista
+        )
+        usuarios.forEach { println(it) }
+
+    }
+
+    data class Usuario(var name: String, var isAdmin: Boolean)
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
