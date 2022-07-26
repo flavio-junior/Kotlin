@@ -1397,6 +1397,44 @@ class User1(var name: String) {
     data class Usuario(var name: String, var isAdmin: Boolean)
 ```
 
+***Kotlin Avançado: Programação Funcional***
+```Kotlin
+    fun main() {
+        calc(5, 3, ::sum)
+        calc(5, 7, ::minus)
+        calc(15, 3, ::divide)
+    }
+
+    // Tratar tudo como funções matématicas f(x) = x * y
+
+    /*
+    *   A programação funcional trata as funções de forma em que estas possam ser passadas com parametro para outras funções
+    * e podendo te o resultado (diferente) armzanado em uma constante
+    * */
+    fun sum(x: Int, y: Int): Int {
+        return x + y
+    }
+
+    fun minus(x: Int, y: Int): Int {
+        return x - y
+    }
+
+    fun divide(x: Int, y: Int): Int {
+        return x / y
+    }
+
+    /*
+        Operação generica que vai calcular dois números, seja eles quais forem. Essa função espera dois parametro e
+        retorna uma valor do tipo inteiro
+     */
+
+    // TODO: 26/07/2022 Função generica
+    fun calc(a: Int, b: Int, operation: (Int, Int) -> Int) {
+        val result = operation(a, b)
+        println("Resultado da operação $a com $b é igual a: $result")
+    }
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
