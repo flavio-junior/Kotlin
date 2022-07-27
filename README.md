@@ -1435,6 +1435,209 @@ class User1(var name: String) {
     }
 ```
 
+***Lambdas***
+```Kotlin
+    fun main() {
+        calc(5, 3) { x, y ->
+            x * y
+        }
+
+        val users = listOf(
+            User("Flávio", true),
+            User("Rafael", false),
+            User("Marcos Brasil Filho", true)
+        )
+
+        val showListUsers = users.filter { user ->
+            user.isAdmin
+        }
+        showListUsers.forEach { list ->
+            println(list)
+        }
+    }
+
+    fun calc(a: Int, b: Int, operation: (Int, Int) -> Int) {
+        val result = operation(a, b)
+        println("Resultado da operação $a com $b é igual a: $result")
+    }
+
+    data class User(var name: String, var isAdmin: Boolean)
+```
+
+***Functions Transformations***
+```Kotlin
+    fun main() {
+        val users = listOf(
+            User("Flávio", true),
+            User("Rafael", false),
+            User("Marcos Brasil Filho", true)
+        )
+
+        // map: List<User> -> List<String>
+        // TODO: 27/07/2022 Criar nova lista de usuários apartir da antiga e converta ela para o tipo String
+        val listNames = users.map {it.name.uppercase()}
+            .filter { it.contains("B") }
+
+        // TODO: 27/07/2022 Imprimir nova lista de usuários
+        listNames.forEach { println(it) }
+    }
+
+    data class User(var name: String, var isAdmin: Boolean)
+```
+
+***Unions***
+```Kotlin
+    fun main() {
+        val numbers = listOf(1, 2, 3, 4, 5, 6)
+        val numbers2 = listOf(1, 2, 5, 10, 12, 16)
+        // TODO: 27/07/2022 Unir duas listas de forma única 
+        val result = numbers.union(numbers2)
+        result.forEach { println(it) }
+    }
+```
+
+***ForEach com Índices***
+```Kotlin
+    fun main() {
+        val numbers = listOf(1, 2, 3, 4, 5, 6)
+        val numbers2 = listOf(1, 2, 5, 10, 12, 16)
+        // TODO: 27/07/2022 Unir duas listas de forma única
+        val result = numbers.union(numbers2)
+        result.forEachIndexed { index, i ->
+            println("Index: $index, id: $i")
+        }
+    }
+```
+
+***For e Loops Tradicionais***
+```Kotlin
+    fun main() {
+        val numbers = listOf(1, 2, 3, 4, 5, 6)
+        val numbers2 = listOf(1, 2, 5, 10, 12, 16)
+        val result = numbers.union(numbers2)
+
+        /* Forma tradicional de trabalhar com lumps
+         */
+        for (number in result) {
+            println(number)
+        }
+
+        /*
+         imprime os dados na lista de o até 3 itens e não inclue o 3
+         */
+        for (index in 0 until 3)
+            println("index: $index, elemento id: ${numbers[index]}")
+
+        /*
+         Imprime os dados na lista de o até o 3
+         */
+        for (index in 0..3) {
+            println("index: $index, elemento id: ${numbers[index]}")
+        }
+
+        /*
+        Imprimir lista de 0 até 2 e pular dados de 2 em 2
+         */
+        for (i in 0 until 20 step 2) {
+            println("Número: $i")
+        }
+
+        /*
+        Imprimir lista de forma decrescente | Do maior para o menor
+         */
+        for (i in 20 downTo 0 step 20) {
+            println("Número: $i")
+        }
+
+        // while | render
+        var i = 0
+        while (i < 10) {
+            println(i)
+            i++
+        }
+
+    }
+```
+
+***Chave e Valor com Maps***
+```Kotlin
+    fun main() {
+        // IMUTÁVEIS | MUTÁVEIS
+        //  listOf -> mutableListOf
+        //  setOf -> mutableSetOf
+        //  mapOf -> mutableMapOf
+
+        val products = mapOf(
+            "Android" to "Google",
+            "iOS" to "Apple",
+            "Windows" to "Microsoft"
+        )
+
+        /*
+            Recupera valor especifico atravé da chave valor
+            val res = products["Android"]
+            println(res)
+         */
+
+        /*
+         o primeiro valor do getOrDefault é o valor da chave enquanto o segundo valor informa alguma coisa caso a resquisa volte vazia
+        val re = products.getOrDefault("Android2", "Não existe um par de chave com esse valor")
+        println(re)
+         */
+
+        /*
+            Busque ou faça outra coisa
+        val res = products.getOrElse("Android2") {
+            "Não existe um par de chave com esse valor"
+        }
+        println(res)
+         */
+
+        /*
+        * Verificar se existe uma chave valor
+        val hasWindows = products.containsKey("Windows")
+        if (hasWindows) {
+            println("Usuário do tipo windows")
+        } else {
+            println("Outro sistema operacional")
+        }
+        * */
+
+        /*
+        Exibir todas as chaves e valores
+        println("Products: $products.keys e valores: ${products.values}")
+         */
+
+    }
+```
+
+***Maps Funcionais***
+```Kotlin
+    fun main() {
+
+        val products = mapOf(
+            "Android" to "Google",
+            "iOS" to "Apple",
+            "Windows" to "Microsoft"
+        )
+
+        val contactsGmail = mapOf(
+            1 to "Tiago",
+            2 to "Gabriel",
+            3 to "Adenilda",
+            4 to "Roberto",
+            5 to ""
+        )
+        // TODO: 27/07/2022 exibe apenas os nomes que tenham a letra "e"
+        //val r = contactsGmail.filter { it.value.contains("e") }
+        // TODO: 27/07/2022 exibe dados na lista que não sejam vazios
+        val r = contactsGmail.filter { it.value.isNotEmpty() }
+            // TODO: 27/07/2022 o substring recupera a primeira letra do nome
+            .map { it.value.substring(0, 1) }
+        println(r)
+    }
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
