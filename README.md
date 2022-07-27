@@ -1638,6 +1638,72 @@ class User1(var name: String) {
     }
 ```
 
+***Any: Hierarquia de Objetos***
+```Kotlin
+    fun main() {
+        // Any - Qualquer coisa
+
+        val obj: Any = getObject(2)
+        if (obj is String) {
+            println(obj)
+        }
+        println(obj)
+    }
+
+    // Retornar qualquer coisa
+    fun getObject(value: Int): Any {
+        return when (value) {
+            1 -> 1
+            2 -> "Aula"
+            3 -> true
+            else -> 1.0
+        }
+    }
+```
+
+***Exceptions***
+```Kotlin
+    fun main() {
+        divide("15", "sdd")
+    }
+
+    fun divide(x: String, y: String) {
+        try {
+            val a = Integer.parseInt(x)
+            val b = Integer.parseInt(y)
+            println(a / b)
+        } catch (e: Throwable) {
+            // TODO: 27/07/2022 O Exception é filho do Throwable
+            //} catch (e: Exception) {
+            println("Formulário inválido")
+        }
+    }
+```
+
+***Lançando Exceções***
+```Kotlin
+    fun main() {
+        showViews()
+    }
+
+    fun showViews() {
+        try {
+            val res = applyDiscount(100.0, 55)
+            println(res)
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        }
+    }
+
+    fun applyDiscount(price: Double, value: Int): Double {
+        if (value > 50) {
+            throw IllegalArgumentException("Desconto muito algo!")
+        }
+        val discount = value * price / 100
+        return price - discount
+    }
+```
+
 # REGRAS DE NOMEAÇÃO E ESCRITA NO KOTLIN
 
 > ***CAMEL CASE - É uma regra aplica em variáveis por palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços, excerto a primeira letra depois de da variável {voceTemQueEscreverDessaManeira}*** 
