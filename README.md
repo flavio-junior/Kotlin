@@ -1715,3 +1715,69 @@ class User1(var name: String) {
 > ***Funções não podem conter o mesmo nome***
 
 > ***Nome de classes começam a primeira letra maiúscula***
+> 
+
+# Coroutines | corrotinas
+
+Uma corrotina é um conceito de suspenção da computação. É semelhante a um thread, no sentido de que é necessário executar um bloco de código que funciona simultaneamente com o restante do código. No entanto, uma corrotina não está vinculada a nenhum thread específico. Pode suspender sua execução em um thread e retomar em outra, sendo consideradas threads leves.
+
+## Tipos de corrotinas:
+
+**LAUNCH: É uma corrotina construtora. Lança uma nova corrotina simultaneamente emquanto executa o restante do código que continua funcionando de forma independente.**
+
+***Executando delay:***
+```kotlin
+fun main() = runBlocking { // this: CoroutineScope
+    launch { // launch a new coroutine and continue
+        delay(1000L) // non-blocking delay for 1 second (default time unit is ms)
+        println("World!") // print after delay
+    }
+    println("Hello") // main coroutine continues while a previous one is delayed
+}
+```
+
+**DELEY: É uma função de suspenção especial. Ela suspende a coroutine por um período de tempo específico sem bloquear a Thread Subjacente, permitindo que outras corrotinas sejam executadas e usem a thread subjacente.**
+
+**RUNBLOCKING: Também é um construtor de corrotinas que faz a ponte entre funções de "não corotina e funções regulares. Sendo utilizados dentro de ```runBlocking{ ... }```.**
+- **Ao utilizar o runBlocking a thread principal fica bloqueada durante a chamada, até que todas as corrotinas dentro do runBlocking concluam sua execução.**
+
+ - **As corrotinas seguem um princípio de simultaneidade estruturada, o que significa que novas corrotinas só podem ser lançadas em um CoroutineScope específico que delimita o tempo de vida da corrotina.**
+
+- **Em um aplicativo real, você lançará muitas corrotinas. A simultaneidade estruturada garante que eles não sejam perdidas e não vazem. Um escopo externo não pode ser concluído até que todas as suas corrotinas filhas sejam concluídas. A simultaneidade estruturada também garante que quaisquer erros no código sejam relatados adequadamente e nunca sejam perdidos.**
+
+## Diferença entre runBlocking e coroutineScope
+
+**O runBlocking bloqueia o thread atual, enquanto coroutineScope apenas suspende, liberando o thread subjacente para outros usos. Por causa dessa diferença, O runBlocking é uma função regular e coroutineScope é uma função de suspensão.**
+
+***Criando função com coroutineScope:***
+```kotlin
+// Sequentially executes doWorld followed by "Done"
+fun main() = runBlocking {
+    doWorld()
+    println("Done")
+}
+
+// Concurrently executes both sections
+suspend fun doWorld() = coroutineScope { // this: CoroutineScope
+    launch {
+        delay(2000L)
+        println("World 2")
+    }
+    launch {
+        delay(1000L)
+        println("World 1")
+    }
+    println("Hello")
+}
+```
+
+***Corrotina explícita:***
+```kotlin
+val job = launch { // launch a new coroutine and keep a reference to its Job
+    delay(1000L)
+    println("World!")
+}
+println("Hello")
+job.join() // wait until child coroutine completes
+println("Done") 
+```
