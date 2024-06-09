@@ -1788,3 +1788,44 @@ println("Done")
 - **List - ```Coleção de elementos ordenados por indices. ```**
 - **Set - ```Coleção de elementos únicos. É um grupo de objetos sem repetição. Sua aparência não tem significado, como exemplo: UUID ou um Ticket.```**
 - **Map - ```Definido como um par de chave valor. São valores únicos e mapeados. Podem ter valores duplicados.```**
+
+**Converter Lista:**
+```kotlin
+fun main() {
+    println(convertListSchool(schools = list))
+}
+
+val list = listOf(
+    SchoolResponse(
+        name = "ETE Jornalista Cyl Gallindo",
+        city = "Buíque - PE",
+        state = "Pernambunco",
+        country = "Brasil"
+    )
+)
+
+fun convertListSchool(schools: List<SchoolResponse>): List<School> {
+    return schools.map {  schoolResponse ->
+        School(
+            name = schoolResponse.name,
+            city = schoolResponse.city,
+            state = schoolResponse.state,
+            country = schoolResponse.country
+        )
+    }
+}
+
+data class SchoolResponse(
+    val name: String,
+    val city: String,
+    val state: String,
+    val country: String
+)
+
+data class School(
+    val name: String,
+    val city: String,
+    val state: String,
+    val country: String
+)
+```
