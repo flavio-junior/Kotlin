@@ -1781,3 +1781,10 @@ println("Hello")
 job.join() // wait until child coroutine completes
 println("Done") 
 ```
+
+# Collections 
+**O Kotlin disponibiliza interfaces para elementos e items, como: sets, lists e maps onde é possivel fazer somente a leitura com o read-only ou edição dos dados mutáveis(mutável) com a adição, remoção e update de elementos.**
+
+- **List - ```Coleção de elementos ordenados por indices. ```**
+- **Set - ```Coleção de elementos únicos. É um grupo de objetos sem repetição. Sua aparência não tem significado, como exemplo: UUID ou um Ticket.```**
+- **Map - ```Definido como um par de chave valor. São valores únicos e mapeados. Podem ter valores duplicados.```**
