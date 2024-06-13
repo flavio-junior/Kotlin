@@ -1829,3 +1829,17 @@ data class School(
     val country: String
 )
 ```
+
+**Ordenar Lista:**
+```kotlin
+val sortedValues = mutableListOf(1, 2, 7, 6, 5, 6)
+
+fun main() {
+    sortedValues.sort()
+    println(sortedValues)
+}
+```
+**Gerar lista de elementos:**
+```
+val listNumbers = (0..21)
+```
